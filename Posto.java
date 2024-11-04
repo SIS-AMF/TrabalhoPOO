@@ -5,17 +5,18 @@ public class Posto {
 
     private final int id, km;
 
-    private int totalVagas, vagasUtilizadas;
+    private int totalVagas, vagasUtilizadas, qtdCarrosPassaram;
     private Duration tempoMedioPorVeiculo;
 
     // Simultaneo?
 
-    public Posto(int id, int totalVagas, int vagasUtilizadas, int km, Duration tempoMedioPorVeiculo) {
+    public Posto(int id, int totalVagas, int vagasUtilizadas, int km) {
         this.id = id;
         this.totalVagas = totalVagas;
         this.vagasUtilizadas = vagasUtilizadas;
         this.km = km;
-        this.tempoMedioPorVeiculo = tempoMedioPorVeiculo;
+        this.tempoMedioPorVeiculo = Duration.ZERO;
+        qtdCarrosPassaram = 0;
     }
 
     public int getId() {
@@ -40,6 +41,12 @@ public class Posto {
 
     public int getKm() {
         return km;
+    }
+
+    public void addVeiculoTempoCarregando(Duration tempo) {
+        qtdCarrosPassaram++;
+        tempoMedioPorVeiculo = Duration.ofNanos(
+                (tempoMedioPorVeiculo.toNanos() * (qtdCarrosPassaram - 1) + tempo.toNanos()) / qtdCarrosPassaram);
     }
 
     public Duration getTempoMedioPorVeiculo() {

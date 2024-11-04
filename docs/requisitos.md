@@ -36,7 +36,9 @@ Uma empresa de mobilidade sustentável precisa de um sistema para gerenciar sua 
 
 <input type="checkbox" checked> Cada eletroposto deve ter uma identificação única, local (cidade e/ou estrada).
 
-<input type="checkbox"> Cada eletroposto deve ter número de vagas disponíveis para carregamento simultâneo e tempo médio de carregamento por veículo.
+<input type="checkbox"> Cada eletroposto deve ter número de vagas disponíveis para carregamento simultâneo.
+
+<input type="checkbox" checked> Cada eletroposto deve ter tempo médio de carregamento por veículo.
 
 <input type="checkbox" checked> Implementar métodos para registrar novos eletropostos.
 
