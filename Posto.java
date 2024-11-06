@@ -3,9 +3,12 @@ import java.time.Duration;
 
 public class Posto {
 
-    private final int id, km;
+    private final int id;
+    private final int km;
 
-    private int totalVagas, vagasUtilizadas, qtdCarrosPassaram;
+    private int totalVagas;
+    private int vagasUtilizadas;
+    private int qtdCarrosPassaram;
     private Duration tempoMedioPorVeiculo;
 
     // Simultaneo?
@@ -55,6 +58,18 @@ public class Posto {
 
     public void setTempoMedioPorVeiculo(Duration tempoMedioPorVeiculo) {
         this.tempoMedioPorVeiculo = tempoMedioPorVeiculo;
+    }
+
+    public void exibir() {
+        System.out.println("ID:" + id);
+        System.out.println("km:" + km);
+
+        // System.out.println("Total Vagas:" + totalVagas);
+        // System.out.println("Vagas:" + vagasUtilizadas);
+        // System.out.println("ID:" + qtdCarrosPassaram);
+        // System.out.println("ID:" + tempoMedioPorVeiculo);
+        
+
     }
 
 }

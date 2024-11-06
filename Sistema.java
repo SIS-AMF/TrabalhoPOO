@@ -176,4 +176,16 @@ public class Sistema {
             }
         }
     }
+
+    public void relatoriaDeRecargasDeUmCarro() {
+        System.out.print("Carro ID: ");
+        int idCarro = scanner.nextInt();
+
+        Optional<Carro> rCarro = carros.stream().filter(carro -> carro.getId() == idCarro).findFirst();
+
+        for (Recaraga recarga : rCarro.get().getRecargas()) {
+            System.out.println();
+            recarga.exibir();
+        }
+    }
 }

@@ -24,4 +24,11 @@ public class Recaraga {
         return posto;
     }
 
+    public void exibir() {
+        System.out.println("kWh: " + kWh);
+        System.out.println("Data: " + data);
+        System.out.println("Posto:----");
+        posto.exibir();
+    }
+
 }
