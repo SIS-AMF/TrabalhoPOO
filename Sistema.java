@@ -30,7 +30,7 @@ public class Sistema {
 
     public void addCidade() {
         System.out.print("Nome: ");
-        String nome = scanner.next();
+        String nome = scanner.nextLine();
 
         cidades.add(new Cidade(idCidades + 1, nome));
         idCidades++;
@@ -72,9 +72,9 @@ public class Sistema {
 
     public void addMotorista() {
         System.out.print("Nome: ");
-        String nome = scanner.next();
+        String nome = scanner.nextLine();
         System.out.print("CNH: ");
-        String cnh = scanner.next();
+        String cnh = scanner.nextLine();
         System.out.print("Nivel: ");
         int nivel = scanner.nextInt();
         motoristas.add(new Motorista(idMotoristas + 1, nivel, cnh, nome));
@@ -94,9 +94,9 @@ public class Sistema {
 
     public void addVeiculo() {
         System.out.print("Marca: ");
-        String marca = scanner.next();
+        String marca = scanner.nextLine();
         System.out.print("Modelo: ");
-        String modelo = scanner.next();
+        String modelo = scanner.nextLine();
         System.out.print("Ano Fabricação: ");
         int ano = scanner.nextInt();
         System.out.print("Capacidade Total Bateria (kWh): ");
@@ -166,6 +166,14 @@ public class Sistema {
         for (Viagem viagem : viagens) {
             System.out.println();
             viagem.exibir();
+        }
+    }
+
+    public void relatorioAutonomiaInferior() {
+        for (Carro carro : carros) {
+            if (carro.getNivelBateria() < 20) {
+                carro.exibir();
+            }
         }
     }
 }

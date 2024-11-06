@@ -13,6 +13,10 @@ public class Carro {
     protected double capacidadeTotalBateria; // kWh
     protected double autonomiaMaxima; // km
     protected int nivelBateria; // porcentagem 
+    public int getNivelBateria() {
+        return nivelBateria;
+    }
+
     protected double odometro;
     protected ArrayList<Recaraga> recargas;
     protected Duration tempoRecarga; // tempo para carregar de 0 a 100
