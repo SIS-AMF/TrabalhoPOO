@@ -117,4 +117,20 @@ public class Sistema {
     public void removeVeiculo(int id) {
         carros.removeIf(carro -> carro.getId() == id);
     }
+
+    public Rota geRota(int id) {
+        return rotas.get(id);
+    }
+
+    public void addPosto(Rota rota) {
+        System.out.print("Total de Vagas: ");
+        int totalVagas = scanner.nextInt();
+        System.out.print("Em qual kilometro se localiza: ");
+        int kmDaRota = scanner.nextInt();
+        rota.addPosto(totalVagas, kmDaRota);
+    }
+
+    public void listEletropostosDisponivel(Rota rota) {
+        rota.consultarPostosDisponiveis();
+    }
 }
