@@ -20,12 +20,16 @@ public class Rota {
         this.distancia = distancia;
         idPostos = 0;
     }
-    
+
     private void ordenarPostosPorDistancia() {
         postos.sort(Comparator.comparingDouble(Posto::getKm));
     }
-    
-    private List<Posto> getPostosDisponiveis() {
+
+    private Posto getPrimeiroPostoDisponivel() {
+        return getPostosDisponiveis().get(0);
+    }
+
+    public List<Posto> getPostosDisponiveis() {
         ArrayList<Posto> lista = new ArrayList<>();
         for (Posto posto : postos) {
             if (posto.getTotalVagas() > posto.getVagasUtilizadas()) {
@@ -34,14 +38,11 @@ public class Rota {
         }
         return lista;
     }
-    
-    private Posto getPrimeiroPostoDisponivel() {
-        return getPostosDisponiveis().get(0);
-    }
-    
+
     public List<Posto> getPostos() {
         return postos;
     }
+
     public boolean addPosto(int totalVagas, int km) {
         if (km < 0 && km > distancia) {
             return false;
@@ -51,7 +52,6 @@ public class Rota {
         ordenarPostosPorDistancia();
         return true;
     }
-
 
     public void consultarPostosDisponiveis() {
         for (Posto posto : postos) {
@@ -67,7 +67,6 @@ public class Rota {
     public Posto getPrimeiroPosto() {
         return postos.get(0);
     }
-
 
     public double maiorDistanciaSemPosto() {
         Posto before = getPrimeiroPostoDisponivel();

@@ -119,7 +119,9 @@ public class Sistema {
     }
 
     public Rota geRota(int id) {
-        return rotas.get(id);
+        Optional<Rota> resultado = rotas.stream().filter(rota -> rota.getId() == id).findFirst();
+
+        return resultado.get();
     }
 
     public void addPosto(Rota rota) {
@@ -132,5 +134,38 @@ public class Sistema {
 
     public void listEletropostosDisponivel(Rota rota) {
         rota.consultarPostosDisponiveis();
+    }
+
+    public void realizarViagem() {
+        System.out.print("Rota ID: ");
+        int idRota = scanner.nextInt();
+        System.out.print("Carro ID: ");
+        int idCarro = scanner.nextInt();
+        System.out.print("Motorista ID: ");
+        int idMotorista = scanner.nextInt();
+
+        Optional<Rota> rRota = rotas.stream().filter(rota -> rota.getId() == idRota).findFirst();
+        Optional<Carro> rCarro = carros.stream().filter(carro -> carro.getId() == idCarro).findFirst();
+        Optional<Motorista> rMotorista = motoristas.stream().filter(motorista -> motorista.getId() == idMotorista).findFirst();
+
+
+
+        Viagem viagem = new Viagem(rRota.get(), rCarro.get(), rMotorista.get());
+
+        if (viagem.registrarViagem()) {
+            viagens.add(viagem);
+        } else {
+            System.out.println("ERRO AO REGISTRAR VIAGEM!");
+            scanner.nextLine();
+        }
+
+
+    }
+
+    public void listViagens() {
+        for (Viagem viagem : viagens) {
+            System.out.println();
+            viagem.exibir();
+        }
     }
 }

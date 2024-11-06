@@ -1,3 +1,4 @@
+
 import java.time.Instant;
 
 public class Viagem {
@@ -22,11 +23,15 @@ public class Viagem {
     }
 
     public boolean registrarViagem() {
-        // se autonomia dura toda viagem
-        if (carro.getAutonomia() < rota.getDistancia()) {
+
+        if (carro.getAutonomia() > rota.getDistancia()) {
             carro.andar(rota.getDistancia());
-        } // se autonomia dura ate o posto mais proximo e se a distancia entre postos e maior do que a autonomia
-        else if (carro.getAutonomia() < rota.getPrimeiroPosto().getKm() && carro.getAutonomiaMaxima() < rota.maiorDistanciaSemPostoDisponiveis()) {
+        } else if (rota.getPostos().isEmpty()) {
+            return false;
+        }
+        else if (carro.getAutonomia() < rota.getPrimeiroPosto().getKm()) {
+            return false;
+        } else if (carro.getAutonomiaMaxima() > rota.maiorDistanciaSemPostoDisponiveis()) {
             Posto last = null;
             double distancia = 0;
             for (Posto posto : rota.getPostosDisponiveis()) {
@@ -38,7 +43,7 @@ public class Viagem {
                 carro.andar(rota.getDistancia() - last.getKm());
             }
 
-        }
+        } 
         return true;
 
     }
@@ -71,4 +76,11 @@ public class Viagem {
         return motorista;
     }
 
+    public void exibir() {
+        System.out.println("Carro ID: " + carro.getId());
+        System.out.println("Rota ID: " + rota.getId());
+        System.out.println("Motorista ID: " + motorista.getNome());
+        System.out.println("Distancia: " + kilometragem);
+        System.out.println("Destino: " + destino);
+    }
 }

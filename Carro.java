@@ -28,6 +28,7 @@ public class Carro {
         recargas = new ArrayList<>();
         odometro = 0;
         nivelBateria = 100;
+        tempoRecarga = Duration.ofHours(4);
     }
 
     public int getId() {
