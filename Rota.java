@@ -9,6 +9,7 @@ public class Rota {
     private final Cidade inicio;
     private final Cidade fim;
     private final ArrayList<Posto> postos;
+    private int idPostos;
     private double distancia;
 
     public Rota(int id, Cidade inicio, Cidade fim, double distancia) {
@@ -17,26 +18,14 @@ public class Rota {
         this.fim = fim;
         this.postos = new ArrayList<>();
         this.distancia = distancia;
+        idPostos = 0;
     }
-
+    
     private void ordenarPostosPorDistancia() {
         postos.sort(Comparator.comparingDouble(Posto::getKm));
     }
-
-    public List<Posto> getPostos() {
-        return postos;
-    }
-
-    public boolean addPosto(int id, int totalVagas, int vagasUtilizadas, int km) {
-        if (km < 0 && km > distancia) {
-            return false;
-        }
-        postos.add(new Posto(id, totalVagas, vagasUtilizadas, km));
-        ordenarPostosPorDistancia();
-        return true;
-    }
-
-    public List<Posto> getPostosDisponiveis() {
+    
+    private List<Posto> getPostosDisponiveis() {
         ArrayList<Posto> lista = new ArrayList<>();
         for (Posto posto : postos) {
             if (posto.getTotalVagas() > posto.getVagasUtilizadas()) {
@@ -45,6 +34,24 @@ public class Rota {
         }
         return lista;
     }
+    
+    private Posto getPrimeiroPostoDisponivel() {
+        return getPostosDisponiveis().get(0);
+    }
+    
+    public List<Posto> getPostos() {
+        return postos;
+    }
+    public boolean addPosto(int totalVagas, int km) {
+        if (km < 0 && km > distancia) {
+            return false;
+        }
+        postos.add(new Posto(idPostos + 1, totalVagas, 0, km));
+        idPostos++;
+        ordenarPostosPorDistancia();
+        return true;
+    }
+
 
     public void consultarPostosDisponiveis() {
         for (Posto posto : postos) {
@@ -61,9 +68,6 @@ public class Rota {
         return postos.get(0);
     }
 
-    public Posto getPrimeiroPostoDisponivel() {
-        return getPostosDisponiveis().get(0);
-    }
 
     public double maiorDistanciaSemPosto() {
         Posto before = getPrimeiroPostoDisponivel();
