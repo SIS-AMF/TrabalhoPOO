@@ -25,4 +25,8 @@ public class Sistema {
         }
     }
 
+    public void realizarViagem(Rota rota, Carro carro, Motorista motorista){
+        viagens.add(new Viagem(rota, carro, motorista));
+    }
+
 }

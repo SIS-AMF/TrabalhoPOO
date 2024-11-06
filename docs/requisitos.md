@@ -42,25 +42,27 @@ Uma empresa de mobilidade sustentável precisa de um sistema para gerenciar sua 
 
 <input type="checkbox" checked> Implementar métodos para registrar novos eletropostos.
 
-<input type="checkbox"> Implementar métodos para consultar os postos de recarga disponíveis ao longo das rotas das viagens.
+<input type="checkbox" checked> Implementar métodos para consultar os postos de recarga disponíveis ao longo das rotas das viagens.
 
 4. Registro de Viagens com Planejamento de Paradas para Recarga:
 
-<input type="checkbox"> Permitir que um motorista realize uma viagem com um carro elétrico, registrando a quilometragem percorrida e o destino.
+<input type="checkbox" checked> Permitir que um motorista realize uma viagem com um carro elétrico, registrando a quilometragem percorrida e o destino.
 
-<input type="checkbox"> Verificar a autonomia restante do carro antes de iniciar a viagem e planejar automaticamente as paradas nos eletropostos ao longo da rota, caso a carga não seja suficiente para completar a viagem.
+<input type="checkbox" checked> Verificar a autonomia restante do carro antes de iniciar a viagem e planejar automaticamente as paradas nos eletropostos ao longo da rota, caso a carga não seja suficiente para completar a viagem.
 
-<input type="checkbox"> Considerar a disponibilidade de vagas nos eletropostos ao planejar as paradas e recalcular a rota se o eletroposto estiver cheio.
+<input type="checkbox" checked> Considerar a disponibilidade de vagas nos eletropostos ao planejar as paradas e recalcular a rota se o eletroposto estiver cheio.
 
-<input type="checkbox"> Atualizar automaticamente a autonomia do veículo após cada viagem realizada e após cada recarga nos eletropostos.
+<input type="checkbox" checked> Atualizar automaticamente a autonomia do veículo após cada viagem realizada.
+
+<input type="checkbox" checked> Atualizar automaticamente a autonomia do veículo após cada recarga nos eletropostos.
 
 5. Gestão de Carregamento de Baterias:
 
-<input type="checkbox"> Registrar os eventos de recarga de bateria para cada carro elétrico, incluindo a data, o eletroposto utilizado e a quantidade de energia recarregada (em kWh).
+<input type="checkbox" checked> Registrar os eventos de recarga de bateria para cada carro elétrico, incluindo a data, o eletroposto utilizado e a quantidade de energia recarregada (em kWh).
 
-<input type="checkbox"> Atualizar a autonomia do carro após a recarga, garantindo que ela não exceda a capacidade máxima da bateria.
+<input type="checkbox" checked> Atualizar a autonomia do carro após a recarga, garantindo que ela não exceda a capacidade máxima da bateria.
 
-<input type="checkbox"> Manter um histórico de todas as recargas de cada veículo, disponível para consulta.
+<input type="checkbox" checked> Manter um histórico de todas as recargas de cada veículo, disponível para consulta.
 
 6. Relatórios e Consultas:
 
@@ -76,15 +78,15 @@ Uma empresa de mobilidade sustentável precisa de um sistema para gerenciar sua 
 
 <input type="checkbox"> Utilize herança para modelar a hierarquia de veículos elétricos (por exemplo, uma classe base CarroEletrico com subclasses CarroCompacto, CarroSedan, e SUVEletrico).
 
-<input type="checkbox"> Utilize o encapsulamento para proteger os dados dos veículos, motoristas, viagens e recargas, garantindo que apenas métodos específicos possam acessar e alterar essas informações.
+<input type="checkbox" checked> Utilize o encapsulamento para proteger os dados dos veículos, motoristas, viagens e recargas, garantindo que apenas métodos específicos possam acessar e alterar essas informações.
 
-<input type="checkbox"> Utilize composição para relacionar as viagens com os objetos de veículos, motoristas e eletropostos, garantindo que uma viagem só possa existir se houver um veículo, motorista e plano de recarga adequados.
+<input type="checkbox" checked> Utilize composição para relacionar as viagens com os objetos de veículos, motoristas e eletropostos, garantindo que uma viagem só possa existir se houver um veículo, motorista e plano de recarga adequados.
 
 ## Requisitos Técnicos:
 
-<input type="checkbox"> O trabalho deve ser implementado em Java, utilizando apenas as bibliotecas padrão (não são permitidos frameworks externos).
+<input type="checkbox" checked> O trabalho deve ser implementado em Java, utilizando apenas as bibliotecas padrão (não são permitidos frameworks externos).
 
-<input type="checkbox"> Não é permitido o uso de interface gráfica. A entrada e saída de dados devem ser realizadas por meio de métodos e estrutura de dados adequadas.
+<input type="checkbox" checked> Não é permitido o uso de interface gráfica. A entrada e saída de dados devem ser realizadas por meio de métodos e estrutura de dados adequadas.
 
 <input type="checkbox"> O código deve estar organizado, seguindo boas práticas de programação, com classes e métodos bem estruturados e comentados.
 

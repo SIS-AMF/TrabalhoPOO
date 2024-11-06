@@ -1,6 +1,8 @@
 
+import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Carro {
 
@@ -8,14 +10,15 @@ public class Carro {
     protected String marca;
     protected String modelo;
     protected int anoFabricacao;
-    protected float capacidadeTotalBateria; // kWh
-    protected float autonomiaMaxima; // km
-    protected float odometro;
+    protected double capacidadeTotalBateria; // kWh
+    protected double autonomiaMaxima; // km
+    protected int nivelBateria; // porcentagem 
+    protected double odometro;
     protected ArrayList<Recaraga> recargas;
-    // Tempo medio de recarga?
+    protected Duration tempoRecarga; // tempo para carregar de 0 a 100
 
-    public Carro(int id, String marca, String modelo, int anoFabricacao, float capacidadeTotalBateria,
-            float autonomiaMaxima) {
+    public Carro(int id, String marca, String modelo, int anoFabricacao, double capacidadeTotalBateria,
+            double autonomiaMaxima) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
@@ -24,6 +27,7 @@ public class Carro {
         this.autonomiaMaxima = autonomiaMaxima;
         recargas = new ArrayList<>();
         odometro = 0;
+        nivelBateria = 100;
     }
 
     public int getId() {
@@ -42,20 +46,46 @@ public class Carro {
         return anoFabricacao;
     }
 
-    public float getCapacidadeTotalBateria() {
+    public double getCapacidadeTotalBateria() {
         return capacidadeTotalBateria;
     }
 
-    public float getAutonomiaMaxima() {
+    public double getAutonomiaMaxima() {
         return autonomiaMaxima;
     }
 
-    public ArrayList<Recaraga> getRecargas() {
+    public List<Recaraga> getRecargas() {
         return recargas;
     }
 
-    public void addRecarga(float kWh, Instant data, Posto posto) {
-        recargas.add(new Recaraga(kWh, data, posto));
+    public double getQuantiaParaCompletar() {
+        return capacidadeTotalBateria * ( 100 - (double) nivelBateria / 100);
+    }
+
+    public void addRecarga(double distancia, Instant data, Posto posto) {
+        andar(distancia);
+        recargas.add(new Recaraga(getQuantiaParaCompletar(), data, posto));
+        nivelBateria = 100;
+    }
+
+    public double getAutonomia() {
+        return autonomiaMaxima * nivelBateria / 100;
+    }
+
+    public boolean andar(double kilometragem) {
+        if (this.getAutonomia() - kilometragem <= 0) {
+            return false;
+        }
+
+        nivelBateria -= kilometragem * 100 / autonomiaMaxima;
+        odometro += kilometragem;
+
+        return true;
+
+    }
+
+    public Duration getTempoParaCompletar() {
+        return Duration.ofNanos(tempoRecarga.getNano() * nivelBateria / 100);
     }
 
 }
