@@ -59,7 +59,7 @@ public class Carro {
     }
 
     public double getQuantiaParaCompletar() {
-        return capacidadeTotalBateria * ( 100 - (double) nivelBateria / 100);
+        return capacidadeTotalBateria * (100 - (double) nivelBateria / 100);
     }
 
     public void addRecarga(double distancia, Instant data, Posto posto) {
@@ -87,5 +87,17 @@ public class Carro {
     public Duration getTempoParaCompletar() {
         return Duration.ofNanos(tempoRecarga.getNano() * nivelBateria / 100);
     }
+
+    public void exibir() {
+        System.out.println("ID: " + id);
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Fabricado: " + anoFabricacao);
+        System.out.println("Total Bateria: " + capacidadeTotalBateria);
+        System.out.println("Autonomia: " + autonomiaMaxima);
+        System.out.println("Nivel Bateria: " + nivelBateria);
+        System.out.println("Odometro: " + odometro);
+        System.out.println("Tempo de Recarga: " + tempoRecarga);
+}
 
 }
