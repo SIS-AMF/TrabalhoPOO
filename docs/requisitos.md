@@ -66,11 +66,11 @@ Uma empresa de mobilidade sustentável precisa de um sistema para gerenciar sua 
 
 6. Relatórios e Consultas:
 
-<input type="checkbox"> Gerar um relatório que liste todos os veículos com autonomia inferior a 20% da capacidade total da bateria.
+<input type="checkbox" checked> Gerar um relatório que liste todos os veículos com autonomia inferior a 20% da capacidade total da bateria.
 
 <input type="checkbox"> Listar todas as viagens realizadas por um determinado motorista, incluindo as distâncias percorridas, os veículos utilizados e os eletropostos onde as recargas foram realizadas.
 
-<input type="checkbox"> Consultar o histórico de recargas de um carro elétrico específico.
+<input type="checkbox" checked> Consultar o histórico de recargas de um carro elétrico específico.
 
 <input type="checkbox"> Listar todos os carros que precisam de manutenção com base na quilometragem percorrida ou na vida útil da bateria.
 
