@@ -3,7 +3,8 @@
 public class Motorista {
     private final int id; 
     private int nivel; // iniciante, intermediário, avançado
-    private final String cnh, nome;
+    private final String nome;
+    private final String cnh;
 
     public Motorista(int id, int nivel, String cnh, String nome) {
         this.id = id;
@@ -33,10 +34,10 @@ public class Motorista {
     }
 
     public void exibir() {
-        System.out.println(id);
-        System.out.println(nivel);
-        System.out.println(cnh);
-        System.out.println(nome);
+        System.out.println("ID: " + id);
+        System.out.println("Nome: " + nome);
+        System.out.println("CNH: " + cnh);
+        System.out.println("Nivel: " + nivel);
     }
 
 }
