@@ -5,16 +5,14 @@ import java.util.List;
 
 public class Rota {
 
+    private final int id;
     private final Cidade inicio;
     private final Cidade fim;
     private final ArrayList<Posto> postos;
     private double distancia;
 
-    public ArrayList<Posto> getPostos() {
-        return postos;
-    }
-
-    public Rota(Cidade inicio, Cidade fim, double distancia) {
+    public Rota(int id, Cidade inicio, Cidade fim, double distancia) {
+        this.id = id;
         this.inicio = inicio;
         this.fim = fim;
         this.postos = new ArrayList<>();
@@ -23,6 +21,10 @@ public class Rota {
 
     private void ordenarPostosPorDistancia() {
         postos.sort(Comparator.comparingDouble(Posto::getKm));
+    }
+
+    public List<Posto> getPostos() {
+        return postos;
     }
 
     public boolean addPosto(int id, int totalVagas, int vagasUtilizadas, int km) {
@@ -43,7 +45,6 @@ public class Rota {
         }
         return lista;
     }
-
 
     public void consultarPostosDisponiveis() {
         for (Posto posto : postos) {
@@ -116,7 +117,19 @@ public class Rota {
         return distancia;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setDistancia(double distancia) {
         this.distancia = distancia;
+    }
+
+    public void exibir() {
+        System.out.println("ID: " + id);
+        System.out.println("Origem: " + inicio.getNome());
+        System.out.println("Destino: " + fim.getNome());
+        System.out.println("Quantia de Postos: " + postos.size());
+        System.out.println("Distancia: " + distancia);
     }
 }
