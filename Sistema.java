@@ -5,16 +5,16 @@ import java.util.Scanner;
 
 public class Sistema {
 
-    private ArrayList<Rota> rotas;
-    private int idRotas;
-    private ArrayList<Viagem> viagens;
-    private ArrayList<Cidade> cidades;
-    private int idCidades;
-    private ArrayList<Motorista> motoristas;
-    private int idMotoristas;
-    private ArrayList<Carro> carros;
     private int idCarros;
-    private Scanner scanner = new Scanner(System.in);
+    private int idMotoristas;
+    private int idCidades;
+    private int idRotas;
+    private final ArrayList<Carro> carros;
+    private final ArrayList<Motorista> motoristas;
+    private final ArrayList<Rota> rotas;
+    private final ArrayList<Cidade> cidades;
+    private final ArrayList<Viagem> viagens;
+    private final Scanner scanner = new Scanner(System.in);
 
     public Sistema() {
         rotas = new ArrayList<>();
@@ -75,8 +75,12 @@ public class Sistema {
         String nome = scanner.nextLine();
         System.out.print("CNH: ");
         String cnh = scanner.nextLine();
-        System.out.print("Nivel: ");
-        int nivel = scanner.nextInt();
+        System.out.println("Digite o nivel do motorista (INICIANTE, INTERMEDIARIO, AVANCADO):");
+        String input = scanner.nextLine().toUpperCase();
+
+        Motorista.NivelExperiencia nivel = Motorista.NivelExperiencia.valueOf(input);
+        System.out.println("Status selecionado: " + nivel);
+
         motoristas.add(new Motorista(idMotoristas + 1, nivel, cnh, nome));
         idMotoristas++;
     }
@@ -148,8 +152,6 @@ public class Sistema {
         Optional<Carro> rCarro = carros.stream().filter(carro -> carro.getId() == idCarro).findFirst();
         Optional<Motorista> rMotorista = motoristas.stream().filter(motorista -> motorista.getId() == idMotorista).findFirst();
 
-
-
         Viagem viagem = new Viagem(rRota.get(), rCarro.get(), rMotorista.get());
 
         if (viagem.registrarViagem()) {
@@ -158,7 +160,6 @@ public class Sistema {
             System.out.println("ERRO AO REGISTRAR VIAGEM!");
             scanner.nextLine();
         }
-
 
     }
 

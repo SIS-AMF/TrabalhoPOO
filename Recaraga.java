@@ -2,6 +2,7 @@
 import java.time.Instant;
 
 public class Recaraga {
+
     private final double kWh;
     private final Instant data;
     private final Posto posto;

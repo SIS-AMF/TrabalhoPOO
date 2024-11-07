@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +14,7 @@ public class Main {
             } else {
                 new ProcessBuilder("clear").inheritIO().start().waitFor();
             }
-        } catch (Exception e) {
+        } catch (IOException | InterruptedException e) {
             System.out.println("Erro ao tentar limpar o terminal: " + e.getMessage());
         }
     }
@@ -39,32 +40,18 @@ public class Main {
             limparTerminal();
 
             switch (opcao) {
-                case 1:
-                    menuVeiculos();
-                    break;
-                case 2:
-                    menuMotoristas();
-                    break;
-                case 3:
-                    menuCidades();
-                    break;
-                case 4:
-                    menuRotas();
-                    break;
-                case 5:
-                    menuEletropostos();
-                    break;
-                case 6:
-                    menuViagens();
-                    break;
-                case 7:
-                    menuRelatorios();
-                    break;
-                case 0:
+                case 1 -> menuVeiculos();
+                case 2 -> menuMotoristas();
+                case 3 -> menuCidades();
+                case 4 -> menuRotas();
+                case 5 -> menuEletropostos();
+                case 6 -> menuViagens();
+                case 7 -> menuRelatorios();
+                case 0 -> {
                     System.out.println("Encerrando o sistema.");
                     return;
-                default:
-                    System.out.println("Opção inválida, tente novamente.");
+                }
+                default -> System.out.println("Opção inválida, tente novamente.");
             }
         }
     }
@@ -82,22 +69,17 @@ public class Main {
 
         limparTerminal();
         switch (opcao) {
-            case 1:
-                sistema.addVeiculo();
-                break;
-            case 2:
+            case 1 -> sistema.addVeiculo();
+            case 2 -> {
                 System.out.print("ID: ");
                 int id = scanner.nextInt();
                 sistema.removeVeiculo(id);
-                break;
-            case 3:
-                sistema.listVeiculo();
-                break;
+            }
+            case 3 -> sistema.listVeiculo();
 
-            case 0:
-                break;
-            default:
-                System.out.println("Opção inválida, tente novamente.");
+            case 0 -> {
+            }
+            default -> System.out.println("Opção inválida, tente novamente.");
         }
     }
 
@@ -112,16 +94,11 @@ public class Main {
 
         limparTerminal();
         switch (opcao) {
-            case 1:
-                sistema.addMotorista();
-                break;
-            case 2:
-                sistema.listarMotoristas();
-                break;
-            case 0:
-                break;
-            default:
-                System.out.println("Opção inválida, tente novamente.");
+            case 1 -> sistema.addMotorista();
+            case 2 -> sistema.listarMotoristas();
+            case 0 -> {
+            }
+            default -> System.out.println("Opção inválida, tente novamente.");
         }
     }
 
@@ -136,16 +113,11 @@ public class Main {
 
         limparTerminal();
         switch (opcao) {
-            case 1:
-                sistema.addRota();
-                break;
-            case 2:
-                sistema.listRotas();
-                break;
-            case 0:
-                break;
-            default:
-                System.out.println("Opção inválida, tente novamente.");
+            case 1 -> sistema.addRota();
+            case 2 -> sistema.listRotas();
+            case 0 -> {
+            }
+            default -> System.out.println("Opção inválida, tente novamente.");
         }
     }
 
@@ -168,16 +140,11 @@ public class Main {
 
         limparTerminal();
         switch (opcao) {
-            case 1:
-                sistema.addPosto(rota);
-                break;
-            case 2:
-                sistema.listEletropostosDisponivel(rota);
-                break;
-            case 0:
-                break;
-            default:
-                System.out.println("Opção inválida, tente novamente.");
+            case 1 -> sistema.addPosto(rota);
+            case 2 -> sistema.listEletropostosDisponivel(rota);
+            case 0 -> {
+            }
+            default -> System.out.println("Opção inválida, tente novamente.");
         }
     }
 
@@ -192,16 +159,11 @@ public class Main {
 
         limparTerminal();
         switch (opcao) {
-            case 1:
-                sistema.realizarViagem();
-                break;
-            case 2:
-                sistema.realizarViagem();
-                break;
-            case 0:
-                break;
-            default:
-                System.out.println("Opção inválida, tente novamente.");
+            case 1 -> sistema.realizarViagem();
+            case 2 -> sistema.realizarViagem();
+            case 0 -> {
+            }
+            default -> System.out.println("Opção inválida, tente novamente.");
         }
     }
 
@@ -218,20 +180,15 @@ public class Main {
 
         limparTerminal();
         switch (opcao) {
-            case 1:
-                sistema.relatorioAutonomiaInferior();
-                break;
-            case 2:
-                break;
-            case 3:
-                sistema.relatoriaDeRecargasDeUmCarro();
-                break;
-            case 4:
-                break;
-            case 0:
-                break;
-            default:
-                System.out.println("Opção inválida, tente novamente.");
+            case 1 -> sistema.relatorioAutonomiaInferior();
+            case 2 -> {
+            }
+            case 3 -> sistema.relatoriaDeRecargasDeUmCarro();
+            case 4 -> {
+            }
+            case 0 -> {
+            }
+            default -> System.out.println("Opção inválida, tente novamente.");
         }
     }
 
@@ -246,16 +203,11 @@ public class Main {
 
         limparTerminal();
         switch (opcao) {
-            case 1:
-                sistema.addCidade();
-                break;
-            case 2:
-                sistema.listCidades();
-                break;
-            case 0:
-                break;
-            default:
-                System.out.println("Opção inválida, tente novamente.");
+            case 1 -> sistema.addCidade();
+            case 2 -> sistema.listCidades();
+            case 0 -> {
+            }
+            default -> System.out.println("Opção inválida, tente novamente.");
         }
     }
 }

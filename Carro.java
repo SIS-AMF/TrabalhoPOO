@@ -13,6 +13,7 @@ public class Carro {
     protected double capacidadeTotalBateria; // kWh
     protected double autonomiaMaxima; // km
     protected int nivelBateria; // porcentagem 
+
     public int getNivelBateria() {
         return nivelBateria;
     }
@@ -103,6 +104,6 @@ public class Carro {
         System.out.println("Nivel Bateria: " + nivelBateria);
         System.out.println("Odometro: " + odometro);
         System.out.println("Tempo de Recarga: " + tempoRecarga);
-}
+    }
 
 }
